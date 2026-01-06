@@ -86,22 +86,11 @@
     </script>
 </head>
 <body>
-    <header class="header">
-        <div class="logo-container">
-            <img src="assets/icons/logo.png" alt="Vizocom" class="logo" width="120" height="40" fetchpriority="high" loading="eager">
-            <p class="logo-tagline">Wisdom in Communications</p>
-        </div>
-        <button class="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" id="hamburgerMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>
-
     <!-- Bootstrap Offcanvas Sidebar Menu -->
     <div class="offcanvas offcanvas-end sidebar-menu" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
         <div class="offcanvas-header sidebar-header">
             <img src="assets/icons/logo.png" alt="Vizocom" class="sidebar-logo" id="sidebarMenuLabel" width="120" height="35" loading="eager">
+            <button type="button" class="btn-close sidebar-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <ul class="sidebar-nav">
@@ -119,6 +108,17 @@
     </div>
 
     <div class="top-block">
+        <header class="header">
+            <div class="logo-container">
+                <img src="assets/icons/logo.png" alt="Vizocom" class="logo" width="120" height="40" fetchpriority="high" loading="eager">
+                <p class="logo-tagline">Wisdom in Communications</p>
+            </div>
+            <button class="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
         <!-- Layer 1: Base Background Image (Always visible) -->
         <div class="hero-bg hero-bg-base"></div>
         
