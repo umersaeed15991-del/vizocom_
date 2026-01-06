@@ -53,7 +53,7 @@
         if (!sliderTrack || !sliderTrack.children.length) return 0;
         
         let totalWidth = 0;
-        const gap = 60; // Match CSS gap value
+        const gap = 30; // Match CSS gap value (updated)
         
         // Calculate width of first group (6 logos + 5 gaps)
         for (let i = 0; i < LOGOS_PER_VIEW && i < sliderTrack.children.length; i++) {
@@ -74,8 +74,7 @@
         
         // Recalculate based on current index
         let totalWidth = 0;
-        const gap = 60;
-        const startIndex = 0;
+        const gap = 30; // Match CSS gap value (updated)
         
         // Calculate width of first group for reference
         for (let i = 0; i < LOGOS_PER_VIEW && i < sliderTrack.children.length; i++) {
@@ -118,7 +117,7 @@
 
     // Slide to previous
     function slidePrev() {
-        if (isAnimating) return;
+        if (isAnimating || !sliderTrack) return;
         
         if (currentIndex > 0) {
             isAnimating = true;
@@ -133,20 +132,27 @@
                 isAnimating = false;
                 updateArrowStates();
             }, 350);
+        } else {
+            updateArrowStates();
         }
     }
 
     // Update arrow button states
     function updateArrowStates() {
-        const maxIndex = Math.floor((TOTAL_LOGOS - 1) / LOGOS_PER_VIEW);
+        if (!sliderTrack) return;
+        
+        const actualLogos = sliderTrack.children.length;
+        const maxIndex = Math.ceil((actualLogos - LOGOS_PER_VIEW) / LOGOS_PER_VIEW);
         
         if (leftArrow) {
             if (currentIndex > 0) {
                 leftArrow.style.opacity = '1';
                 leftArrow.style.pointerEvents = 'auto';
+                leftArrow.disabled = false;
             } else {
                 leftArrow.style.opacity = '0.5';
                 leftArrow.style.pointerEvents = 'none';
+                leftArrow.disabled = true;
             }
         }
         
@@ -154,9 +160,11 @@
             if (currentIndex < maxIndex) {
                 rightArrow.style.opacity = '1';
                 rightArrow.style.pointerEvents = 'auto';
+                rightArrow.disabled = false;
             } else {
                 rightArrow.style.opacity = '0.5';
                 rightArrow.style.pointerEvents = 'none';
+                rightArrow.disabled = true;
             }
         }
     }
